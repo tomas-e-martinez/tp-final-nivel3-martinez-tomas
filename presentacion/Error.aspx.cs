@@ -11,7 +11,7 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblError.Text = Server.GetLastError() != null ? Server.GetLastError().Message :  "Error desconocido";
         }
     }
 }

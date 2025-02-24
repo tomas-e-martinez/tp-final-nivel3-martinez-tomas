@@ -17,5 +17,10 @@ namespace presentacion
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Server.Transfer("~/Error.aspx");
+        }
     }
 }
