@@ -53,8 +53,9 @@
       <Name>dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="CATALOGO_DB.sql" />
+    <Content Include="ScriptDB\CATALOGO_WEB_DB_query.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
