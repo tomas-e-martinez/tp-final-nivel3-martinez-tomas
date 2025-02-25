@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ArticuloDetalle.aspx.cs" Inherits="presentacion.ArticuloDetalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <h1 class="mb-3">Información del Artículo</h1>
+    <hr />
     <div class="row">
         <div class="col-4">
             <div class="mb-3">

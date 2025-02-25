@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoArticulos.aspx.cs" Inherits="presentacion.ListadoArticulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <h1 class="mb-3">Listado de Artículos</h1>
+    <hr />
 
     <div class="row">
         <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
@@ -12,6 +14,12 @@
                 <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
             </Columns>
         </asp:GridView>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+        <a class="btn btn-success" href="ArticuloDetalle.aspx">Agregar artículo</a>
+
+        </div>
     </div>
 
 </asp:Content>

@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="presentacion.Perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row mb-3">
-        <h1>Mi Perfil</h1>
-    </div>
+    <h1 class="mb-3">Mi Perfil</h1>
+    <hr />
     <div class="row">
         <div class="col-12 mb-3">
             <asp:Label Text="Nombre" runat="server" for="txtNombre" CssClass="form-label" />
@@ -19,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-4 mb-3">
-            <asp:Button Text="Guardar Cambios" runat="server" ID="btnGuardarPerfil" CssClass="btn btn-primary" />
+            <asp:Button Text="Guardar cambios" runat="server" ID="btnGuardarPerfil" CssClass="btn btn-primary" />
         </div>
     </div>
 </asp:Content>

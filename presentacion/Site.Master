@@ -38,7 +38,9 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark bg-dark">
+        <% string paginaActual = Request.Url.AbsolutePath.ToLower(); %>
+
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/">Tienda de Artículos</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
@@ -47,23 +49,31 @@
                 </button>
                 <div class="collapse navbar-collapse d-lg-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="ListadoArticulos.aspx">Listado de Artículos</a></li>
+                        <li class="nav-item"><a class="nav-link <% if(paginaActual == "/default.aspx" || paginaActual == "/default") { %> active <% } %>"
+                            href="Default.aspx">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link <% if(paginaActual == "/listadoarticulos.aspx" || paginaActual == "/listadoarticulos") { %> active <% } %>"
+                            href="ListadoArticulos.aspx">Listado de Artículos</a></li>
                         <%if(true) { // VALIDAR SI HAY SESIÓN INICIADA %>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="Favoritos.aspx">Favoritos</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="Perfil.aspx">Mi Perfil</a></li>
+                            <li class="nav-item"><a class="nav-link <% if(paginaActual == "/favoritos.aspx" || paginaActual == "/favoritos") { %> active <% } %>" 
+                                href="Favoritos.aspx">Favoritos</a></li>
+                            <li class="nav-item"><a class="nav-link <% if(paginaActual == "/perfil.aspx" || paginaActual == "/perfil") { %> active <% } %>"
+                                href="Perfil.aspx">Mi Perfil</a></li>
                         <% } %>
                     </ul>
                     <%if(true) { // VALIDAR SI HAY SESIÓN INICIADA %> 
                         <ul class="navbar-nav ms-auto d-flex">
-                            <li class="nav-item"><a class="nav-link" runat="server" href="LogIn.aspx">Iniciar Sesión</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="Registro.aspx">Registrarse</a></li>
+                            <%--BOTONES PARA NAV BAR--%>
+                            <li class="nav-item"><a class="btn btn-primary me-3 d-none d-lg-block" runat="server" href="LogIn.aspx">Iniciar Sesión</a></li>
+                            <li class="nav-item"><a class="btn btn-success d-none d-lg-block" runat="server" href="Registro.aspx">Registrarse</a></li>
+                            <%--BOTONES PARA MENU DESPLEGABLE--%>
+                            <li class="nav-item"><a class="nav-link link-primary d-block d-lg-none" runat="server" href="LogIn.aspx">Iniciar Sesión</a></li>
+                            <li class="nav-item"><a class="nav-link link-success d-block d-lg-none" runat="server" href="Registro.aspx">Registrarse</a></li>
                         </ul>
                     <% } %>
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
+        <div class="container body-content pt-5">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

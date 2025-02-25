@@ -10,6 +10,9 @@
         }
     </style>
 
+    <h1 class="mb-3">Bienvenido/a</h1>
+    <hr />
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
@@ -20,7 +23,7 @@
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                             <p class="card-text">$<%#Eval("Precio", "{0:F2}") %></p>
-                            <a href="ArticuloDetalle.aspx?id=<%#Eval("Id") %>" class="btn btn-primary">Ver Detalle</a>
+                            <a href="ArticuloDetalle.aspx?id=<%#Eval("Id") %>" class="btn btn-primary">Ver detalle</a>
                         </div>
                     </div>
                 </div>
