@@ -50,7 +50,7 @@ namespace presentacion
                         txtNombre.Text = seleccionado.Nombre;
                         txtPrecio.Text = seleccionado.Precio.ToString();
                         txtUrlImagen.Text = seleccionado.ImagenUrl;
-                        //txtUrlImagen_TextChanged(sender, e);
+                        txtUrlImagen_TextChanged(sender, e);
                         ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                         ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
                     }
@@ -122,6 +122,30 @@ namespace presentacion
             {
                 throw ex;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx", false);
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                articuloNegocio.eliminar(int.Parse(Request.QueryString["id"]));
+                Response.Redirect("Default.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
+        {
+            imgArticulo.ImageUrl = txtUrlImagen.Text;
         }
     }
 }

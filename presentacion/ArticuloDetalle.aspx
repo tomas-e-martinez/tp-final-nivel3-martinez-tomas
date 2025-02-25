@@ -41,7 +41,7 @@
                 <ContentTemplate>
                     <div class="mb-3">
                         <asp:Label Text="URL de Imagen" runat="server" for="txtUrlImagen" CssClass="form-label" />
-                        <asp:TextBox runat="server" ID="txtUrlImagen" AutoPostBack="true"
+                        <asp:TextBox runat="server" ID="txtUrlImagen" AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged"
                             placeholder="http://imagenes.com/celular" CssClass="form-control mb-3" />
                         <asp:Image ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUwCJYSnbBLMEGWKfSnWRGC_34iCCKkxePpg&s" runat="server" ID="imgArticulo" Width="60%" />
                     </div>
@@ -52,10 +52,10 @@
     <div class="row">
         <div class="col-12">
             <asp:Button Text="Agregar" runat="server" CssClass="btn btn-success" ID="btnAgregar" OnClick="btnAgregar_Click"  />
-            <asp:Button Text="Volver" runat="server" CssClass="btn btn-secondary" ID="btnCancelar" />
+            <asp:Button Text="Volver" runat="server" CssClass="btn btn-secondary" ID="btnCancelar" OnClick="btnCancelar_Click" />
             <asp:Button Text="Guardar cambios" runat="server" CssClass="btn btn-success" ID="btnModificar" OnClick="btnModificar_Click" />
             <asp:Button Text="Eliminar" runat="server" CssClass="btn btn-danger"
-                ID="btnEliminar"
+                ID="btnEliminar" OnClick="btnEliminar_Click"
                 OnClientClick="return confirm('¿Está seguro de que desea eliminar este artículo?');" />
         </div>
     </div>

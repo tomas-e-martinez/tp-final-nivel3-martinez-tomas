@@ -11,14 +11,14 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        public void eliminar(Articulo eliminar)
+        public void eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
                 datos.setearQuery("delete ARTICULOS where Id = @id");
-                datos.setearParametro("@id", eliminar.Id);
+                datos.setearParametro("@id", id);
 
                 datos.ejecutarAccion();
             }
