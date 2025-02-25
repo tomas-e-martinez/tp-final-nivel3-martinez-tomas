@@ -105,22 +105,13 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.Image imgArticulo;
 
         /// <summary>
-        /// Control btnAceptar.
+        /// Control btnAgregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
-
-        /// <summary>
-        /// Control btnModificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificar;
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
         /// Control btnCancelar.
@@ -130,6 +121,15 @@ namespace presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+
+        /// <summary>
+        /// Control btnModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificar;
 
         /// <summary>
         /// Control btnEliminar.

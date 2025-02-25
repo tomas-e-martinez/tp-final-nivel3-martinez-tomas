@@ -5,13 +5,16 @@
     <hr />
 
     <div class="row">
-        <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
+        <asp:GridView ID="dgvArticulos" DataKeyNames="Id" runat="server" 
+            CssClass="table table-striped" AutoGenerateColumns="false" 
+            OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged" >
             <Columns>
                 <asp:BoundField HeaderText="Código" DataField="Codigo" />
                 <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Categoría" DataField="Categoria.Descripcion" />
                 <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
+                <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Editar" />
             </Columns>
         </asp:GridView>
     </div>

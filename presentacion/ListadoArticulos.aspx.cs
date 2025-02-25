@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 using negocio;
 
 namespace presentacion
@@ -15,9 +16,19 @@ namespace presentacion
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                dgvArticulos.DataSource = negocio.listar();
+                Session.Add("listaArticulos", negocio.listar());
+
+                List<Articulo> lista = ((List<Articulo>)Session["listaArticulos"]);
+
+                dgvArticulos.DataSource = lista;
                 dgvArticulos.DataBind();
             }
+        }
+
+        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("ArticuloDetalle.aspx?id=" + id);
         }
     }
 }

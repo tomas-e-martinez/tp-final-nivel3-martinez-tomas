@@ -49,10 +49,14 @@
             </asp:UpdatePanel>
         </div>
     </div>
-    <asp:Button Text="Aceptar" runat="server" CssClass="btn btn-primary" ID="btnAceptar"  />
-    <asp:Button Text="Modificar" runat="server" CssClass="btn btn-primary" ID="btnModificar" />
-    <asp:Button Text="Cancelar" runat="server" CssClass="btn btn-secondary" ID="btnCancelar" />
-    <asp:Button Text="Eliminar" runat="server" CssClass="btn btn-danger"
-        ID="btnEliminar"
-        OnClientClick="return confirm('¿Está seguro de que desea eliminar este artículo?');" />
+    <div class="row">
+        <div class="col-12">
+            <asp:Button Text="Agregar" runat="server" CssClass="btn btn-success" ID="btnAgregar" OnClick="btnAgregar_Click"  />
+            <asp:Button Text="Volver" runat="server" CssClass="btn btn-secondary" ID="btnCancelar" />
+            <asp:Button Text="Guardar cambios" runat="server" CssClass="btn btn-success" ID="btnModificar" OnClick="btnModificar_Click" />
+            <asp:Button Text="Eliminar" runat="server" CssClass="btn btn-danger"
+                ID="btnEliminar"
+                OnClientClick="return confirm('¿Está seguro de que desea eliminar este artículo?');" />
+        </div>
+    </div>
 </asp:Content>

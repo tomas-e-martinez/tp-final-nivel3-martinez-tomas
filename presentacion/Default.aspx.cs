@@ -16,7 +16,10 @@ namespace presentacion
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                List<Articulo> lista = negocio.listar();
+                Session.Add("listaArticulos", negocio.listar());
+
+                List<Articulo> lista = ((List<Articulo>)Session["listaArticulos"]);
+
 
                 repRepetidor.DataSource = lista;
                 repRepetidor.DataBind();
