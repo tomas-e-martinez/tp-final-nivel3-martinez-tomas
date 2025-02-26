@@ -15,6 +15,14 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <style>
+        .img-perfil-navbar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 15px
+        }
+    </style>
 
 </head>
 <body>
@@ -60,16 +68,36 @@
                                 href="Perfil.aspx">Mi Perfil</a></li>
                         <% } %>
                     </ul>
-                    <%if(Session["usuario"] == null) { // VALIDAR SI HAY SESIÓN INICIADA %> 
-                        <ul class="navbar-nav ms-auto d-flex">
+                    <ul class="navbar-nav ms-auto d-flex">
+                    <%if(Session["usuario"] == null) { // VALIDAR SI NO HAY SESIÓN INICIADA %> 
                             <%--BOTONES PARA NAV BAR--%>
                             <li class="nav-item"><a class="btn btn-primary me-3 d-none d-lg-block" runat="server" href="LogIn.aspx">Iniciar Sesión</a></li>
                             <li class="nav-item"><a class="btn btn-success d-none d-lg-block" runat="server" href="Registro.aspx">Registrarse</a></li>
                             <%--BOTONES PARA MENU DESPLEGABLE--%>
                             <li class="nav-item"><a class="nav-link link-primary d-block d-lg-none" runat="server" href="LogIn.aspx">Iniciar Sesión</a></li>
                             <li class="nav-item"><a class="nav-link link-success d-block d-lg-none" runat="server" href="Registro.aspx">Registrarse</a></li>
-                        </ul>
+                    <% } else { %>
+                            <%--BOTONES PARA NAV BAR--%>
+                            <li class="nav-item">
+                                <asp:LinkButton Text="Salir" runat="server" CssClass="btn btn-outline-primary d-none d-lg-block" ID="btnSalirNav" 
+                                    OnClick="btnSalirNav_Click" />
+                            </li>
+                            <%--BOTONES PARA MENU DESPLEGABLE--%>
+                            <li class="nav-item">
+                                <asp:LinkButton Text="Salir" runat="server" CssClass="nav-link link-primary d-block d-lg-none" ID="btnSalirMenuDesp" 
+                                    OnClick="btnSalirNav_Click" />
+                            </li>
                     <% } %>
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="Perfil.aspx" class="nav-link">
+                                    <asp:Label Text="" runat="server" ID="lblNombreNav" CssClass="d-none d-lg-block"/>
+                                </a>
+                                <a href="Perfil.aspx">
+                                    <asp:Image ImageUrl=""
+                                        runat="server" ID="imgPerfil" CssClass="img-perfil-navbar d-none d-lg-block"/>
+                                </a>
+                            </li>
+                    </ul>
                 </div>
             </div>
         </nav>

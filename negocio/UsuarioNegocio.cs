@@ -14,7 +14,7 @@ namespace negocio
 			AccesoDatos datos = new AccesoDatos();
 			try
 			{
-				datos.setearQuery("SELECT id, admin from USERS where email = @email and pass = @pass");
+				datos.setearQuery("SELECT id, admin, urlImagenPerfil, nombre, apellido from USERS where email = @email and pass = @pass");
 				datos.setearParametro("@email", user.Email);
 				datos.setearParametro("@pass", user.Pass);
 
@@ -23,7 +23,10 @@ namespace negocio
 				{
 					user.Id = (int)datos.Lector["id"];
 					user.Admin = (bool)datos.Lector["admin"];
-					return true;
+					user.UrlImagenPerfil = datos.Lector["urlImagenPerfil"].ToString();
+					user.Nombre = datos.Lector["nombre"].ToString();
+					user.Apellido = datos.Lector["apellido"].ToString();
+                    return true;
 				}
 				return false;
 
