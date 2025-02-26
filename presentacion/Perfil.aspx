@@ -13,7 +13,7 @@
         </div>
         <div class="col-12 mb-3">
             <asp:Label Text="Imagen de perfil (URL)" runat="server" for="txtUrlImagen" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control" REQUIRED TextMode="Url" placeholder="https://imagenes.com/perfil.jpg" />
+            <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control" TextMode="Url" placeholder="https://imagenes.com/perfil.jpg" />
         </div>
     </div>
     <div class="row">
