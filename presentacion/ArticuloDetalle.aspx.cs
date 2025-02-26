@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
 using dominio;
+using Microsoft.Ajax.Utilities;
+using System.Text.RegularExpressions;
 
 namespace presentacion
 {
@@ -63,17 +65,57 @@ namespace presentacion
                 }
                 catch (Exception ex)
                 {
+                    Session.Add("error", ex);
                     throw ex;
                 }
             }
+        }
+
+        private bool validarFormulario()
+        {
+            if (txtCodigo.Text.IsNullOrWhiteSpace() || txtNombre.Text.IsNullOrWhiteSpace() || txtPrecio.Text.IsNullOrWhiteSpace())
+            {
+                lblMensaje.Text = "Debe completar los campos de 'Código', 'Nombre' y 'Precio'";
+                lblMensaje.CssClass = "text-danger";
+                return false ;
+            }
+
+            if (txtCodigo.Text.Length > 50 || txtNombre.Text.Length > 50 ||
+                    txtDescripcion.Text.Length > 150 || txtUrlImagen.Text.Length > 1000 ||
+                    txtPrecio.Text.Length > 20)
+            {
+                lblMensaje.Text = "Uno o más campos exceden el límite de caracteres permitidos";
+                lblMensaje.CssClass = "text-danger";
+                return false;
+            }
+
+            if(!Regex.IsMatch(txtPrecio.Text, @"^\d{1,15}(\.\d{1,4})?$"))
+            {
+                lblMensaje.Text = "El precio ingresado no es válido, debe ser un número positivo con hasta 4 decimales";
+                lblMensaje.CssClass = "text-danger";
+                return false;
+            }
+
+
+            return true;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (!validarFormulario())
+                    return;
+
                 Articulo art = new Articulo();
                 ArticuloNegocio negocio = new ArticuloNegocio();
+
+                if (!negocio.codigoDisponible(txtCodigo.Text))
+                {
+                    lblMensaje.Text = "Ya existe un artículo con el código ingresado";
+                    lblMensaje.CssClass = "text-danger";
+                    return;
+                }
 
                 art.Codigo = txtCodigo.Text;
                 art.Nombre = txtNombre.Text;
@@ -87,10 +129,12 @@ namespace presentacion
                 art.Marca.Id = int.Parse(ddlMarca.SelectedValue);
 
                 negocio.agregar(art);
-                Response.Redirect("Default.aspx", false);
+                lblMensaje.Text = "Artículo agregado correctamente";
+                lblMensaje.CssClass = "text-success";
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
                 throw ex;
             }
         }
@@ -99,6 +143,9 @@ namespace presentacion
         {
             try
             {
+                if (!validarFormulario())
+                    return;
+
                 Articulo art = new Articulo();
                 ArticuloNegocio negocio = new ArticuloNegocio();
 
@@ -120,6 +167,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
                 throw ex;
             }
         }
@@ -139,6 +187,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
                 throw ex;
             }
         }

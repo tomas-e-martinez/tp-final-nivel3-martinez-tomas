@@ -31,7 +31,7 @@ namespace presentacion
                 }
                 catch (Exception ex)
                 {
-
+                    Session.Add("error", ex);
                     throw ex;
                 }
             }

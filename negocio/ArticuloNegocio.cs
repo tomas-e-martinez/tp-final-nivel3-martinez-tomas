@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -246,6 +247,31 @@ namespace negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool codigoDisponible(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("SELECT id from ARTICULOS where codigo = @codigo");
+                datos.setearParametro("@codigo", codigo);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                    return false;
+                else
+                    return true;
+
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
