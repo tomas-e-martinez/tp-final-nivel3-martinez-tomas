@@ -12,8 +12,8 @@
             <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" REQUIRED placeholder="Pérez" />
         </div>
         <div class="col-12 mb-3">
-            <asp:Label Text="Correo electrónico" runat="server" for="txtUser" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtUser" CssClass="form-control" REQUIRED TextMode="Email" placeholder="nombre@ejemplo.com"/>
+            <asp:Label Text="Correo electrónico" runat="server" for="txtEmail" CssClass="form-label" />
+            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" REQUIRED TextMode="Email" placeholder="nombre@ejemplo.com"/>
         </div>
         <div class="col-12 mb-3">
             <asp:Label Text="Contraseña" runat="server" for="txtPass" CssClass="form-label" />
@@ -26,7 +26,10 @@
     </div>
     <div class="row">
         <div class="col-4 mb-3">
-            <asp:Button Text="Registrarse" runat="server" ID="btnRegistrarse" CssClass="btn btn-success" />
+            <asp:Button Text="Registrarse" runat="server" ID="btnRegistrarse" CssClass="btn btn-success" OnClick="btnRegistrarse_Click" />
+        </div>
+        <div class="col-12 mb-3">
+            <asp:Label runat="server" ID="lblError" CssClass="text-danger" />
         </div>
     </div>
 </asp:Content>

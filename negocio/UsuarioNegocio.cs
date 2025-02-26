@@ -41,5 +41,50 @@ namespace negocio
 				datos.cerrarConexion();
             }
 		}
-	}
+
+		public bool EmailDisponible(string email)
+		{
+			AccesoDatos datos = new AccesoDatos();
+			try
+			{
+				datos.setearQuery("SELECT id from USERS where email = @email");
+				datos.setearParametro("@email", email);
+				datos.ejecutarLectura();
+				if (datos.Lector.Read())
+					return false;
+				else
+					return true;
+
+            }
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+			finally
+			{
+				datos.cerrarConexion();
+			}
+        }
+
+        public int Registrar(Usuario user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+			try
+			{
+				datos.setearQuery("INSERT INTO USERS (email, pass, nombre, apellido, admin) OUTPUT inserted.Id VALUES (@email, @pass, @nombre, @apellido, 0)");
+				datos.setearParametro("@email", user.Email);
+				datos.setearParametro("@pass", user.Pass);
+                datos.setearParametro("@nombre", user.Nombre);
+                datos.setearParametro("@apellido", user.Apellido);
+				return datos.ejecutarScalar();
+            }
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+        }
+    }
 }
