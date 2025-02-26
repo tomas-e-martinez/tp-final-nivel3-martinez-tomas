@@ -19,15 +19,15 @@ namespace presentacion
                 {
                     Usuario usuario = (Usuario)Session["usuario"];
 
-                    if (string.IsNullOrEmpty(usuario.UrlImagenPerfil))
+                    if (string.IsNullOrWhiteSpace(usuario.UrlImagenPerfil))
                         imgPerfil.ImageUrl = "https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0=";
                     else
                         imgPerfil.ImageUrl = usuario.UrlImagenPerfil;
 
-                    if (!string.IsNullOrEmpty(usuario.Nombre))
+                    if (!string.IsNullOrWhiteSpace(usuario.Nombre))
                     {
                         lblNombreNav.Text = usuario.Nombre;
-                        if (!string.IsNullOrEmpty(usuario.Apellido))
+                        if (!string.IsNullOrWhiteSpace(usuario.Apellido))
                             lblNombreNav.Text += $" {usuario.Apellido}";
                     }
                 }
