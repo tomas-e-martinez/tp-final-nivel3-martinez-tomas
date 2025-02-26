@@ -5,15 +5,15 @@
     <div class="row">
         <div class="col-12 mb-3">
             <asp:Label Text="Nombre *" runat="server" for="txtNombre" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" REQUIRED placeholder="Juan" />
+            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" REQUIRED placeholder="Juan" MaxLength="50" />
         </div>
         <div class="col-12 mb-3">
             <asp:Label Text="Apellido *" runat="server" for="txtApellido" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" REQUIRED placeholder="Pérez" />
+            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" REQUIRED placeholder="Pérez" MaxLength="50" />
         </div>
         <div class="col-12 mb-3">
             <asp:Label Text="Imagen de perfil (URL)" runat="server" for="txtUrlImagen" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control" TextMode="Url" placeholder="https://imagenes.com/perfil.jpg" />
+            <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control" TextMode="Url" placeholder="https://imagenes.com/perfil.jpg" MaxLength="500" />
         </div>
     </div>
     <div class="row">

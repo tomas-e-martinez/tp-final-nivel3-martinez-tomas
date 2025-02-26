@@ -56,6 +56,13 @@ namespace presentacion
                     return;
                 }
 
+                if (txtNombre.Text.Length > 50 || txtApellido.Text.Length > 50 || txtUrlImagen.Text.Length > 500)
+                {
+                    lblMensaje.Text = "Uno de los campos excede el límite de caracteres permitidos";
+                    lblMensaje.CssClass = "text-danger";
+                    return;
+                }
+
                 negocio.modificar(user);
                 lblMensaje.Text = "Perfil modificado correctamente";
                 lblMensaje.CssClass = "text-success";
@@ -73,7 +80,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
+                Session.Add("error", ex);
                 throw ex;
             }
         }
