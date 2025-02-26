@@ -34,6 +34,12 @@ namespace presentacion
                     return;
                 }
 
+                //if (txtPass.Text.Length < 6)
+                //{
+                //    lblError.Text = "La contraseña debe tener al menos 6 caracteres";
+                //    return;
+                //}
+
                 //if(!Regex.IsMatch(txtEmail.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
                 //{
                 //    lblError.Text = "El email ingresado no es válido";
@@ -68,8 +74,8 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
-                throw;
+                Session.Add("error", ex);
+                throw ex;
             }
         }
     }

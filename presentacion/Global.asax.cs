@@ -20,6 +20,7 @@ namespace presentacion
 
         void Application_Error(object sender, EventArgs e)
         {
+            Server.ClearError();
             Server.Transfer("~/Error.aspx");
         }
     }
