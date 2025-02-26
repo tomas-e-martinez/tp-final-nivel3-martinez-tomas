@@ -106,7 +106,11 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Tomás Ezequiel Martínez - 
+                    <a href="https://github.com/tomas-e-martinez" target="_blank">GitHub</a>
+                    -
+                    <a href="https://www.linkedin.com/in/tomasezequielmartinez/" target="_blank">LinkedIn</a>
+                </p>
             </footer>
         </div>
     </form>
