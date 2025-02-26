@@ -59,15 +59,17 @@
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Categoría" DataField="Categoria.Descripcion" />
                 <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
-                <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Editar" />
+                <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Selec." />
             </Columns>
         </asp:GridView>
     </div>
+    <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Admin) { %>
     <div class="row mb-3">
         <div class="col-12">
             <a class="btn btn-success" href="ArticuloDetalle.aspx">Agregar artículo</a>
 
         </div>
     </div>
+    <% } %>
 
 </asp:Content>

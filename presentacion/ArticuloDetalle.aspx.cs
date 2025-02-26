@@ -19,6 +19,22 @@ namespace presentacion
             {
                 try
                 {
+                    if (Request.QueryString["id"] == null && (Session["usuario"] == null || ((Usuario)Session["usuario"]).Admin == false))
+                    {
+                        Response.Redirect("Default.aspx", false);
+                        return;
+                    }
+                    if(Session["usuario"] == null || ((Usuario)Session["usuario"]).Admin == false)
+                    {
+                        txtCodigo.Enabled = false;
+                        txtNombre.Enabled = false;
+                        txtDescripcion.Enabled = false;
+                        txtUrlImagen.Enabled = false;
+                        txtPrecio.Enabled = false;
+                        ddlCategoria.Enabled = false;
+                        ddlMarca.Enabled = false;
+                    }
+
                     txtId.Enabled = false;
 
                     CategoriaNegocio negocioCategoria = new CategoriaNegocio();
