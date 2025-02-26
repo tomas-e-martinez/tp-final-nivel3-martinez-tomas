@@ -9,7 +9,7 @@
             <div class="mb-3">
                 <asp:Label Text="Filtro" runat="server" for="txtFiltro" CssClass="" />
                 <asp:TextBox runat="server" ID="txtFiltro" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged"
-                    CssClass="form-control" />
+                    CssClass="form-control" MaxLength="50" />
             </div>
         </div>
         <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
@@ -38,7 +38,7 @@
         </div>
         <div class="col-4 mb-3">
             <asp:Label Text="Filtro" for="txtFiltroAvanzado" runat="server" />
-            <asp:TextBox runat="server" ID="txtFiltroAvanzado" CssClass="form-control" />
+            <asp:TextBox runat="server" ID="txtFiltroAvanzado" CssClass="form-control" MaxLength="50"/>
         </div>
     </div>
     <div class="row">

@@ -36,9 +36,12 @@ namespace presentacion
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
+            if (txtFiltro.Text.Length > 50)
+                return;
+
             List<Articulo> listaFiltrada = ((List<Articulo>)Session["listaArticulos"]).FindAll(x => x.Nombre.ToLower().Contains(txtFiltro.Text.ToLower()));
             dgvArticulos.DataSource = listaFiltrada;
-            dgvArticulos .DataBind();
+            dgvArticulos.DataBind();
         }
 
         protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
@@ -57,12 +60,14 @@ namespace presentacion
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
                 ddlCriterio.Items.Add("Menor a");
+                txtFiltroAvanzado.TextMode = TextBoxMode.Number;
             }
             else
             {
                 ddlCriterio.Items.Add("Contiene");
                 ddlCriterio.Items.Add("Comienza con");
                 ddlCriterio.Items.Add("Termina con");
+                txtFiltroAvanzado.TextMode = TextBoxMode.SingleLine;
             }
         }
 
@@ -70,6 +75,9 @@ namespace presentacion
         {
             try
             {
+                if (txtFiltroAvanzado.Text.Length > 50)
+                    return;
+
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 List<Articulo> listaFiltrada = negocio.filtrar(
                     ddlCampo.SelectedItem.ToString(), 
@@ -81,7 +89,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
+                Session.Add("error", ex);
                 throw ex;
             }
         }
