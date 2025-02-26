@@ -45,6 +45,8 @@ namespace presentacion
         {
             FiltroAvanzado = chkFiltroAvanzado.Checked;
             txtFiltro.Enabled = !chkFiltroAvanzado.Checked;
+            if(FiltroAvanzado)
+                ddlCampo_SelectedIndexChanged(sender, e);
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
