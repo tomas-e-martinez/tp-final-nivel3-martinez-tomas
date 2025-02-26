@@ -34,11 +34,11 @@ namespace presentacion
                     return;
                 }
 
-                //if (txtPass.Text.Length < 6)
-                //{
-                //    lblError.Text = "La contraseña debe tener al menos 6 caracteres";
-                //    return;
-                //}
+                if (txtEmail.Text.Length > 100 || txtPass.Text.Length > 20)
+                {
+                    lblError.Text = "El email o la contraseña exceden el límite de caracteres permitidos";
+                    return;
+                }
 
                 //if(!Regex.IsMatch(txtEmail.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
                 //{
@@ -46,17 +46,19 @@ namespace presentacion
                 //    return;
                 //}
 
+                //if (txtPass.Text.Length < 6)
+                //{
+                //    lblError.Text = "La contraseña debe tener al menos 6 caracteres";
+                //    return;
+                //}
+
+
                 if (txtEmail.Text.Contains(" ") || txtPass.Text.Contains(" "))
                 {
                     lblError.Text = "El email y la contraseña no pueden contener espacios";
                     return;
                 }
 
-                if (txtEmail.Text.Length > 50 || txtPass.Text.Length > 20)
-                {
-                    lblError.Text = "El email o la contraseña exceden el límite de caracteres permitidos";
-                    return;
-                }
 
                 user.Email = txtEmail.Text;
                 user.Pass = txtPass.Text;

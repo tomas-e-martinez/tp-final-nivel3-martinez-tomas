@@ -34,7 +34,33 @@ namespace presentacion
                     return;
                 }
 
-                if(txtPass.Text != txtConfirmarPass.Text)
+                if (txtEmail.Text.Length > 100 || txtPass.Text.Length > 20 ||
+                    txtApellido.Text.Length > 50 || txtNombre.Text.Length > 50 ||
+                    txtConfirmarPass.Text.Length > 20)
+                {
+                    lblError.Text = "Uno o más campos exceden el límite de caracteres permitidos";
+                    return;
+                }
+
+                //if(!Regex.IsMatch(txtEmail.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+                //{
+                //    lblError.Text = "El email ingresado no es válido";
+                //    return;
+                //}
+
+                //if (txtPass.Text.Length < 6)
+                //{
+                //    lblError.Text = "La contraseña debe tener al menos 6 caracteres";
+                //    return;
+                //}
+
+                if (txtEmail.Text.Contains(" ") || txtPass.Text.Contains(" "))
+                {
+                    lblError.Text = "El email y la contraseña no pueden contener espacios";
+                    return;
+                }
+
+                if (txtPass.Text != txtConfirmarPass.Text)
                 {
                     lblError.Text = "Las contraseñas no coinciden";
                     return;
@@ -59,7 +85,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
+                Session.Add("error", ex);
                 throw ex;
             }
         }

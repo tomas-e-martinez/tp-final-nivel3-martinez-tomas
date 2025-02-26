@@ -5,7 +5,7 @@
     <div class="row mb-3">
         <div class="col-12 mb-3">
             <asp:Label Text="Correo electrónico" runat="server" for="txtUsuario" CssClass="form-label" />
-            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" MaxLength="50" REQUIRED />
+            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" MaxLength="100" REQUIRED />
         </div>
         <div class="col-12 mb-3">
             <asp:Label Text="Contraseña" runat="server" for="txtPass" CssClass="form-label"/>
