@@ -9,7 +9,7 @@ namespace negocio
 {
 	public class UsuarioNegocio
 	{
-		public bool Loguear(Usuario user)
+		public bool loguear(Usuario user)
 		{
 			AccesoDatos datos = new AccesoDatos();
 			try
@@ -42,7 +42,7 @@ namespace negocio
             }
 		}
 
-		public bool EmailDisponible(string email)
+		public bool emailDisponible(string email)
 		{
 			AccesoDatos datos = new AccesoDatos();
 			try
@@ -67,7 +67,7 @@ namespace negocio
 			}
         }
 
-        public int Registrar(Usuario user)
+        public int registrar(Usuario user)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -85,6 +85,31 @@ namespace negocio
 
 				throw ex;
 			}
+        }
+
+		public void modificar(Usuario user)
+		{
+			AccesoDatos datos = new AccesoDatos();
+
+			try
+			{
+				datos.setearQuery("update USERS set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @urlImagenPerfil where Id = @id");
+                datos.setearParametro("@nombre", user.Nombre);
+                datos.setearParametro("@apellido", user.Apellido);
+                datos.setearParametro("@urlImagenPerfil", user.UrlImagenPerfil);
+                datos.setearParametro("@id", user.Id);
+
+                datos.ejecutarAccion();
+            }
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+			finally
+			{
+				datos.cerrarConexion();
+            }
         }
     }
 }

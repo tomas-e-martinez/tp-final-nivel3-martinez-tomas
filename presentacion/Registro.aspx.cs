@@ -41,7 +41,7 @@ namespace presentacion
                 }
 
                 UsuarioNegocio negocio = new UsuarioNegocio();
-                if (!negocio.EmailDisponible(txtEmail.Text))
+                if (!negocio.emailDisponible(txtEmail.Text))
                 {
                     lblError.Text = "Ya existe una cuenta con ese email";
                     return;
@@ -52,7 +52,7 @@ namespace presentacion
                 user.Apellido = txtApellido.Text;
                 user.Email = txtEmail.Text;
                 user.Pass = txtPass.Text;
-                user.Id = negocio.Registrar(user);
+                user.Id = negocio.registrar(user);
                 Session.Add("usuario", user);
                 Response.Redirect("Default.aspx", false);
 

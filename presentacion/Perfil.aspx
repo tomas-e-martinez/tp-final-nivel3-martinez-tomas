@@ -4,11 +4,11 @@
     <hr />
     <div class="row">
         <div class="col-12 mb-3">
-            <asp:Label Text="Nombre" runat="server" for="txtNombre" CssClass="form-label" />
+            <asp:Label Text="Nombre *" runat="server" for="txtNombre" CssClass="form-label" />
             <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" REQUIRED placeholder="Juan" />
         </div>
         <div class="col-12 mb-3">
-            <asp:Label Text="Apellido" runat="server" for="txtApellido" CssClass="form-label" />
+            <asp:Label Text="Apellido *" runat="server" for="txtApellido" CssClass="form-label" />
             <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" REQUIRED placeholder="Pérez" />
         </div>
         <div class="col-12 mb-3">
@@ -18,7 +18,11 @@
     </div>
     <div class="row">
         <div class="col-4 mb-3">
-            <asp:Button Text="Guardar cambios" runat="server" ID="btnGuardarPerfil" CssClass="btn btn-success" />
+            <asp:Button Text="Guardar cambios" runat="server" ID="btnGuardarPerfil" CssClass="btn btn-success" OnClick="btnGuardarPerfil_Click"/>
+        </div>
+        <div class="col-12 mb-3">
+            <asp:Label runat="server" ID="lblMensaje" />
         </div>
     </div>
+
 </asp:Content>

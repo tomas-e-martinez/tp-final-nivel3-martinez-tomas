@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
+using Microsoft.Ajax.Utilities;
+using negocio;
 
 namespace presentacion
 {
@@ -34,6 +36,46 @@ namespace presentacion
                 }
             }
 
+        }
+
+        protected void btnGuardarPerfil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                UsuarioNegocio negocio = new UsuarioNegocio();
+
+                user.Nombre = txtNombre.Text;
+                user.Apellido = txtApellido.Text;
+                user.UrlImagenPerfil = txtUrlImagen.Text;
+
+                if(txtNombre.Text.IsNullOrWhiteSpace() || txtApellido.Text.IsNullOrWhiteSpace())
+                {
+                    lblMensaje.Text = "Debe completar los campos marcados como obligatorios (*)";
+                    lblMensaje.CssClass = "text-danger";
+                    return;
+                }
+
+                negocio.modificar(user);
+                lblMensaje.Text = "Perfil modificado correctamente";
+                lblMensaje.CssClass = "text-success";
+                
+                ((Image)Master.FindControl("imgPerfil")).ImageUrl = user.UrlImagenPerfil;
+
+                Label lblNombreNav = ((Label)Master.FindControl("lblNombreNav"));
+                if (!user.Nombre.IsNullOrWhiteSpace())
+                {
+                    lblNombreNav.Text = user.Nombre;
+                    if (!user.Apellido.IsNullOrWhiteSpace())
+                        lblNombreNav.Text += $" {user.Apellido}";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

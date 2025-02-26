@@ -36,7 +36,7 @@ namespace presentacion
                 user.Email = txtEmail.Text;
                 user.Pass = txtPass.Text;
 
-                if (negocio.Loguear(user))
+                if (negocio.loguear(user))
                 {
                     Session.Add("usuario", user);
                     Response.Redirect("Default.aspx", false);
