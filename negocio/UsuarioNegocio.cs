@@ -85,6 +85,10 @@ namespace negocio
 
 				throw ex;
 			}
+			finally
+			{
+				datos.cerrarConexion();
+			}
         }
 
 		public void modificar(Usuario user)

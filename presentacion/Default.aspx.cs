@@ -25,5 +25,21 @@ namespace presentacion
                 repRepetidor.DataBind();
             }
         }
+
+        protected void btnAgregarFav_Click(object sender, CommandEventArgs e)
+        {
+            if (Session["usuario"] == null)
+                Response.Redirect("LogIn.aspx");
+
+            FavoritoNegocio negocio = new FavoritoNegocio();
+            int idArticulo = int.Parse(e.CommandArgument.ToString());
+            int idUser = ((Usuario)Session["usuario"]).Id;
+
+            negocio.agregarFavorito(idArticulo, idUser);
+
+            ((Button)sender).CssClass = "btn btn-dark";
+            ((Button)sender).Text = "Agregado a favoritos";
+            ((Button)sender).Enabled = false;
+        }
     }
 }
