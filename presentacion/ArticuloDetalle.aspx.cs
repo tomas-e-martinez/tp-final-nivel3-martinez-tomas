@@ -32,6 +32,11 @@ namespace presentacion
                 }
 
             }
+            else
+            {
+                btnMarcarFav.Visible = true;
+                btnDesmarcarFav.Visible = false;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)

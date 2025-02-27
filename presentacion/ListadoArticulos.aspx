@@ -62,6 +62,7 @@
                 <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Selec." />
             </Columns>
         </asp:GridView>
+        <asp:Label Text="" runat="server" ID="lblListadoArticulos" />
     </div>
     <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Admin) { %>
     <div class="row mb-3">

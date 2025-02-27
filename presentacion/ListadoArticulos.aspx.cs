@@ -25,7 +25,17 @@ namespace presentacion
 
                 dgvArticulos.DataSource = lista;
                 dgvArticulos.DataBind();
+
+                setearLabel();
             }
+        }
+
+        private void setearLabel()
+        {
+            if (dgvArticulos.DataSource == null || ((List<Articulo>)dgvArticulos.DataSource).Count == 0)
+                lblListadoArticulos.Text = "No se encontraron artículos.";
+            else
+                lblListadoArticulos.Text = "";
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,6 +52,7 @@ namespace presentacion
             List<Articulo> listaFiltrada = ((List<Articulo>)Session["listaArticulos"]).FindAll(x => x.Nombre.ToLower().Contains(txtFiltro.Text.ToLower()));
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.DataBind();
+            setearLabel();
         }
 
         protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
@@ -86,6 +97,7 @@ namespace presentacion
 
                 dgvArticulos.DataSource = listaFiltrada;
                 dgvArticulos.DataBind();
+                setearLabel();
             }
             catch (Exception ex)
             {
