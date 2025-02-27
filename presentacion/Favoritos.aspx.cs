@@ -11,6 +11,14 @@ namespace presentacion
 {
     public partial class Favoritos : System.Web.UI.Page
     {
+        private void setearLabel()
+        {
+            if (dgvFavoritos.DataSource == null || ((List<Articulo>)dgvFavoritos.DataSource).Count == 0)
+                lblFavoritos.Text = "No tienes artículos favoritos.";
+            else
+                lblFavoritos.Text = "";
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["usuario"] == null)
@@ -24,15 +32,9 @@ namespace presentacion
                 int idUser = ((Usuario)Session["usuario"]).Id;
 
                 List<Articulo> listaFavoritos = negocio.listarFavoritosUser(idUser);
-                if(listaFavoritos.Count > 0)
-                {
-                    dgvFavoritos.DataSource = listaFavoritos;
-                    dgvFavoritos.DataBind();
-                }
-                else
-                {
-                    lblFavoritos.Text = "No tienes artículos favoritos.";
-                }
+                dgvFavoritos.DataSource = listaFavoritos;
+                dgvFavoritos.DataBind();
+                setearLabel();
             }
         }
 
