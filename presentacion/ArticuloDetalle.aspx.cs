@@ -13,6 +13,27 @@ namespace presentacion
 {
     public partial class ArticuloDetalle : System.Web.UI.Page
     {
+        private void setearBotonFav()
+        {
+            if (Session["usuario"] != null)
+            {
+                int idArticulo = int.Parse(Request.QueryString["id"]);
+                int idUser = ((Usuario)Session["usuario"]).Id;
+                FavoritoNegocio negocio = new FavoritoNegocio();
+                if(negocio.favoritoExiste(idArticulo, idUser))
+                {
+                    btnDesmarcarFav.Visible = true;
+                    btnMarcarFav.Visible = false;
+                }
+                else
+                {
+                    btnMarcarFav.Visible = true;
+                    btnDesmarcarFav.Visible = false;
+                }
+
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -55,6 +76,7 @@ namespace presentacion
 
                     if (Request.QueryString["id"] != null)
                     {
+                        setearBotonFav();
                         btnAgregar.Visible = false;
 
                         int id = int.Parse(Request.QueryString["id"]);
@@ -71,11 +93,15 @@ namespace presentacion
                         txtUrlImagen_TextChanged(sender, e);
                         ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                         ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
+
                     }
                     else
                     {
+                        btnMarcarFav.Visible = false;
+                        btnDesmarcarFav.Visible = false;
                         btnModificar.Visible = false;
                         btnEliminar.Visible = false;
+                        btnMarcarFav.Visible = false;
                     }
 
                 }
@@ -211,6 +237,51 @@ namespace presentacion
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgArticulo.ImageUrl = txtUrlImagen.Text;
+        }
+
+        protected void btnMarcarFav_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["usuario"] == null)
+                    Response.Redirect("LogIn.aspx");
+
+                FavoritoNegocio negocio = new FavoritoNegocio();
+                int idArticulo = int.Parse(Request.QueryString["id"]);
+                int idUser = ((Usuario)Session["usuario"]).Id;
+
+                negocio.agregarFavorito(idArticulo, idUser);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw ex;
+            }
+            finally
+            {
+                setearBotonFav();
+            }
+        }
+
+        protected void btnDesmarcarFav_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FavoritoNegocio negocio = new FavoritoNegocio();
+                int idArticulo = int.Parse(Request.QueryString["id"]);
+                int idUser = ((Usuario)Session["usuario"]).Id;
+
+                negocio.eliminarFavorito(idArticulo, idUser);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw ex;
+            }
+            finally
+            {
+                setearBotonFav();
+            }
         }
     }
 }

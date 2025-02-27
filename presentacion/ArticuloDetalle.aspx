@@ -61,6 +61,8 @@
                 ID="btnEliminar" OnClick="btnEliminar_Click"
                 OnClientClick="return confirm('¿Está seguro de que desea eliminar este artículo?');" />
             <% } %>
+            <asp:Button Text="Marcar favorito" runat="server" CssClass="btn btn-outline-dark" ID="btnMarcarFav" OnClick="btnMarcarFav_Click"/>
+            <asp:Button Text="Desmarcar favorito" runat="server" CssClass="btn btn-dark" ID="btnDesmarcarFav" OnClick="btnDesmarcarFav_Click"/>
         </div>
         <div class="col-12 mb-3">
             <asp:Label runat="server" ID="lblMensaje" />

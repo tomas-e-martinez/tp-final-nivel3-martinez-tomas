@@ -53,6 +53,36 @@ namespace negocio
 
                 throw ex;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool eliminarFavorito(int idArticulo, int idUser)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                if (!favoritoExiste(idArticulo, idUser))
+                    return false;
+
+                datos.setearQuery("delete FAVORITOS where idArticulo = @idArticulo and idUser = @idUser");
+                datos.setearParametro("@idArticulo", idArticulo);
+                datos.setearParametro("@idUser", idUser);
+                datos.ejecutarAccion();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }
