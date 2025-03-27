@@ -1,5 +1,5 @@
 <h1>Sistema de Gestión de Artículos</h1>
-<p>Proyecto desarrollado como parte del curso de C# Nivel 3 de Maxi Programa.</p>
+<p>Proyecto desarrollado como proyecto final para el curso de C# Nivel 3 de <a href="https://maxiprograma.com/">Maxi Programa</a>.</p>
 
 <h2>Enlace al proyecto</h2>
 <p><a href="https://articulos-cs3.somee.com/" target="_blank">articulos-cs3.somee.com</a></p>
