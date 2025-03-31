@@ -6,7 +6,7 @@
 
 <h2>Tecnologías utilizadas</h2>
 <ul>
-    <li><strong>Framework:</strong> ASP.NET WinForms con .NET Framework 4.8</li>
+    <li><strong>Framework:</strong> ASP.NET WebForms con .NET Framework 4.8</li>
     <li><strong>Base de datos:</strong> SQL Server con ADO.NET</li>
     <li><strong>Frontend:</strong> Bootstrap</li>
     <li><strong>Control de versiones:</strong> GitHub</li>
